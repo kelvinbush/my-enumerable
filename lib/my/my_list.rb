@@ -7,9 +7,7 @@ class MyList
     @list = list
   end
 
-  # rubocop:disable Style/ExplicitBlockArgument
   def each
-    @list.each { |item| yield item }
+    @list.each { |element| yield(element) if block_given? }
   end
-  # rubocop:enable Style/ExplicitBlockArgument
 end

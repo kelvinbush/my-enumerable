@@ -1,1 +1,15 @@
-require_relative './my_enumerable'class MyList  include MyEnumerable  def initialize(*list)    @list = list  end  def each(&block)    @list.each(&block)  endend
+require_relative './my_enumerable'
+
+class MyList
+  include MyEnumerable
+
+  def initialize(*list)
+    @list = list
+  end
+
+  # rubocop:disable Style/ExplicitBlockArgument
+  def each
+    @list.each { |item| yield item }
+  end
+  # rubocop:enable Style/ExplicitBlockArgument
+end

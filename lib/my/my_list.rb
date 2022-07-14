@@ -7,17 +7,7 @@ class MyList
     @list = list
   end
 
-  # rubocop:disable Style/ExplicitBlockArgument
-  def each
-    @list.each { |item| yield item }
+  def each(&block)
+    @list.each(&block)
   end
-
-  # rubocop:enable Style/ExplicitBlockArgument
 end
-
-list = MyList.new(1, 2, 3, 4)
-list.all? { |e| e < 5 }
-list.any? { |e| e == 2 }
-list.all? { |e| e > 5 }
-list.any? { |e| e == 5 }
-list.filter(&:even?)
